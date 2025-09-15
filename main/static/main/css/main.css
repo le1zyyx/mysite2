@@ -45,3 +45,38 @@ aside ul li a:hover {
 }
 
 aside ul {list-style: none}
+
+aside ul li a {
+    display: inline-block;
+    transition: transform 0.2s cubic-bezier(.25,1.5,.5,1);
+    color: #ad8d23;
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    transform: scale(1.1);
+    color: #ad8d23;
+    text-decoration: underline;
+}
+
+p {
+    font-size: 22px;
+}
+
+.features {
+    padding-top: 150px;
+    margin-left: 22%;
+    text-align: center;
+}
+
+.features h1 {
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 22px;
+}
+
+.features p {
+    font-size: 24px;
+    font-weight: bold;
+
+}

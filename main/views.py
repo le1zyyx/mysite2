@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'main/index.html')
+    data = {
+        'title': 'My favourite places in Kyiv'
+    }
+    return render(request, 'main/index.html', data)
 
 def places_list(request):
     return render(request, 'main/places_list.html')
