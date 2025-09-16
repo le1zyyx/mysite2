@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import random
 
 def index(request):
     data = {'title': 'My favourite places in Kyiv'}
@@ -34,4 +35,14 @@ def new_place(request):
     return render(request, 'main/new_place.html')
 
 def random_place(request):
-    return render(request, 'main/random_place.html')
+    places = [
+        "Ботанічний сад ім.Гришка",
+        "Пузата Хата",
+        "Multiplex",
+        "WakeHub"
+    ]
+    selected_place = None
+    if request.method == "POST":
+        selected_place = random.choice(places)
+
+    return render(request, 'main/random_place.html', {'selected_place': selected_place})

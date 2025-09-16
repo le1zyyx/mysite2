@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+{% block title %}Куди піти сьогодні?{% endblock %}
+
+{% block content %}
+<div class="random-container">
+
+    <div class="particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <h1 class="random-title">Куди піти сьогодні?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="random-button">Тикни</button>
+    </form>
+
+    {% if selected_place %}
+    <div class="result-box">
+        {{ selected_place }}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
