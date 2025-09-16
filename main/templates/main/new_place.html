@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати заклад</title>
+    {% load static %}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 350px;
+            padding: 30px 25px;
+            border: 2px solid #6c5ce7;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.2);
+            background: #ffffff;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #6c5ce7;
+            font-size: 1.8rem;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #333333;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding: 8px 10px;
+            font-size: 16px;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6c5ce7;
+            box-shadow: 0 0 8px rgba(108, 92, 231, 0.3);
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #6c5ce7;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #341f97;
+            transform: scale(1.05);
+        }
+
+        .form-container img {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            width: 100px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="{% static 'main/img/pepe-galaxy.png' %}" alt="Pepe Galaxy">
+        <h1>Додай свій улюблений заклад</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="name">Назва:</label>
+            <input type="text" id="name" name="name" value="{{ name|default:'' }}">
+            {% if errors.name %}
+            <div class="error">{{ errors.name }}</div>
+            {% endif %}
+
+            <label for="rating">Рейтинг (1-5⭐):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" value="{{ rating|default:'' }}">
+            {% if errors.rating %}
+            <div class="error">{{ errors.rating }}</div>
+            {% endif %}
+
+            <button type="submit">Додати</button>
+        </form>
+    </div>
+</body>
+</html>
